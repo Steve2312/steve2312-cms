@@ -22,21 +22,6 @@ public class ModelController(IModelService service) : Controller
 
         return Ok(response);
     }
-
-    [HttpGet("{id}/instances")]
-    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(InstanceResponse))]
-    [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<IActionResult> GetInstances(Guid id)
-    {
-        var model = await service.GetAsync(id);
-        
-        if (model == null) return NotFound();
-        
-        var response = model.Instances?.Select(InstanceResponseExtensions.ToResponse) ?? [];
-        
-        return Ok(response);
-    }
-
         
     [HttpGet]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<ModelResponse>))]

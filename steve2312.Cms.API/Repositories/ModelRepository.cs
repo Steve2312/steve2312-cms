@@ -21,7 +21,6 @@ public class ModelRepository(CmsDbContext context) : IModelRepository
     {
         return await context.Models
             .Include(model => model.KeyFields)
-            .Include(model => model.Instances)
             .FirstOrDefaultAsync(model => model.Id == id);
     }
 

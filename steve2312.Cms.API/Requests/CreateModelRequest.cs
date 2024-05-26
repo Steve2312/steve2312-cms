@@ -5,7 +5,6 @@ namespace steve2312.Cms.API.Requests;
 public class CreateModelRequest
 {
     public required string Name { get; set; }
-    public required IList<CreateKeyFieldRequest> KeyFields { get; set; }
 }
 
 public static class CreateModelRequestExtensions
@@ -14,8 +13,7 @@ public static class CreateModelRequestExtensions
     {
         return new Model
         {
-            Name = createModelRequest.Name,
-            KeyFields = createModelRequest.KeyFields.Select(CreateKeyFieldRequestExtensions.ToModel).ToList()
+            Name = createModelRequest.Name
         };
     }
 }

@@ -10,3 +10,16 @@
 /home/steve2312/projects/steve2312-cms/steve2312.Cms.DAL/obj/Debug/net8.0/refint/steve2312.Cms.DAL.dll
 /home/steve2312/projects/steve2312-cms/steve2312.Cms.DAL/obj/Debug/net8.0/steve2312.Cms.DAL.pdb
 /home/steve2312/projects/steve2312-cms/steve2312.Cms.DAL/obj/Debug/net8.0/ref/steve2312.Cms.DAL.dll
+C:\Users\stefa\Documents\Projects\steve2312-cms\steve2312.Cms.DAL\bin\Debug\net8.0\steve2312.Cms.DAL.deps.json
+C:\Users\stefa\Documents\Projects\steve2312-cms\steve2312.Cms.DAL\bin\Debug\net8.0\steve2312.Cms.DAL.dll
+C:\Users\stefa\Documents\Projects\steve2312-cms\steve2312.Cms.DAL\bin\Debug\net8.0\steve2312.Cms.DAL.pdb
+C:\Users\stefa\Documents\Projects\steve2312-cms\steve2312.Cms.DAL\obj\Debug\net8.0\steve2312.Cms.DAL.csproj.AssemblyReference.cache
+C:\Users\stefa\Documents\Projects\steve2312-cms\steve2312.Cms.DAL\obj\Debug\net8.0\steve2312.Cms.DAL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\stefa\Documents\Projects\steve2312-cms\steve2312.Cms.DAL\obj\Debug\net8.0\steve2312.Cms.DAL.AssemblyInfoInputs.cache
+C:\Users\stefa\Documents\Projects\steve2312-cms\steve2312.Cms.DAL\obj\Debug\net8.0\steve2312.Cms.DAL.AssemblyInfo.cs
+C:\Users\stefa\Documents\Projects\steve2312-cms\steve2312.Cms.DAL\obj\Debug\net8.0\steve2312.Cms.DAL.csproj.CoreCompileInputs.cache
+C:\Users\stefa\Documents\Projects\steve2312-cms\steve2312.Cms.DAL\obj\Debug\net8.0\steve2312.Cms.DAL.sourcelink.json
+C:\Users\stefa\Documents\Projects\steve2312-cms\steve2312.Cms.DAL\obj\Debug\net8.0\steve2312.Cms.DAL.dll
+C:\Users\stefa\Documents\Projects\steve2312-cms\steve2312.Cms.DAL\obj\Debug\net8.0\refint\steve2312.Cms.DAL.dll
+C:\Users\stefa\Documents\Projects\steve2312-cms\steve2312.Cms.DAL\obj\Debug\net8.0\steve2312.Cms.DAL.pdb
+C:\Users\stefa\Documents\Projects\steve2312-cms\steve2312.Cms.DAL\obj\Debug\net8.0\ref\steve2312.Cms.DAL.dll
