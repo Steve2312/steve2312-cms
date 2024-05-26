@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="..\buildMultiTargeting\steve2312.Cms.API.props" />
-</Project>
