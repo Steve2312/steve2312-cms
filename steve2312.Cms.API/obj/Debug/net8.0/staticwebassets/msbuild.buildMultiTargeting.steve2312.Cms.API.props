@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="../build/steve2312.Cms.API.props" />
+</Project>
