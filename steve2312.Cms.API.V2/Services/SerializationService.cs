@@ -12,15 +12,23 @@ public class SerializationService : ISerializationService
     {
         var json = new JsonObject();
 
-        var keysFields = entity.Model?.StringKeyFields;
+        var stringKeyFields = entity.Model?.StringKeyFields;
+        var integerKeyFields = entity.Model?.IntegerKeyFields;
         
-        if (keysFields == null) return null;
+        if (stringKeyFields == null || integerKeyFields == null) return null;
         
-        var valueFields = entity.StringValueFields ?? [];
+        var stringValueFields = entity.StringValueFields ?? [];
+        var integerValueFields = entity.IntegerValueFields ?? [];
 
-        var pairs = CombineKeyValueFields(keysFields, valueFields);
+        var stringPairs = CombineKeyValueFields(stringKeyFields, stringValueFields);
+        var integerPairs = CombineKeyValueFields(integerKeyFields, integerValueFields);
         
-        foreach (var pair in pairs)
+        foreach (var pair in stringPairs)
+        {
+            json.Add(pair.Key.Key, pair.Value?.Value);
+        }
+        
+        foreach (var pair in integerPairs)
         {
             json.Add(pair.Key.Key, pair.Value?.Value);
         }

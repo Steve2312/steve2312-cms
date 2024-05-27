@@ -32,6 +32,28 @@ public class EntityController(IEntityService entityService, ISerializationServic
     }
     
     /// <summary>
+    /// Retrieve all serialized entities from specific model
+    /// </summary>
+    /// <response code="200">Serialized entities returned successfully</response>
+    /// <response code="404">Model with specified id could not be found</response>
+    [HttpGet("model/{id}/serialized")]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<JsonObject>))]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> GetAllSerializedByModelId(Guid id)
+    {
+        var entities = await entityService.GetAllByModelIdAsync(id);
+
+        if (entities == null)
+        {
+            return NotFound();
+        }
+
+        var response = entities.Select(serializationService.Serialize);
+
+        return Ok(response);
+    }
+    
+    /// <summary>
     /// Get entity by its primary key
     /// </summary>
     /// <response code="200">Entity returned successfully</response>

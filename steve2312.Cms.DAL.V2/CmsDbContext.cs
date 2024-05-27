@@ -14,6 +14,9 @@ public class CmsDbContext(DbContextOptions options) : DbContext(options)
     public virtual DbSet<Entity> Entities { get; init; }
     public virtual DbSet<StringKeyField> StringKeyFields { get; init; }
     public virtual DbSet<StringValueField> StringValueFields { get; init; }
+    
+    public virtual DbSet<IntegerKeyField> IntegerKeyFields { get; init; }
+    public virtual DbSet<IntegerValueField> IntegerValueFields { get; init; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -22,7 +25,9 @@ public class CmsDbContext(DbContextOptions options) : DbContext(options)
         
         modelBuilder.ApplyConfiguration(new KeyFieldConfiguration());
         modelBuilder.ApplyConfiguration(new StringKeyFieldConfiguration());
+        modelBuilder.ApplyConfiguration(new IntegerKeyFieldConfiguration());
         
         modelBuilder.ApplyConfiguration(new StringValueFieldConfiguration());
+        modelBuilder.ApplyConfiguration(new IntegerValueFieldConfiguration());
     }
 }

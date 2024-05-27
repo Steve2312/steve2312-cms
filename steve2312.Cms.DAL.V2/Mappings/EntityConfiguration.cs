@@ -21,5 +21,13 @@ public class EntityConfiguration : IEntityTypeConfiguration<Entity>
         builder
             .HasIndex(entity => entity.Name)
             .IsUnique();
+
+        builder
+            .HasMany(entity => entity.StringValueFields)
+            .WithOne(field => field.Entity);
+        
+        builder
+            .HasMany(entity => entity.IntegerValueFields)
+            .WithOne(field => field.Entity);
     }
 }

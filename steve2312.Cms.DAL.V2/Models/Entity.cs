@@ -9,5 +9,6 @@ public class Entity
     
     public virtual Model? Model { get; init; }
     public virtual ICollection<StringValueField>? StringValueFields { get; init; }
+    public virtual ICollection<IntegerValueField>? IntegerValueFields { get; init; }
     
 }

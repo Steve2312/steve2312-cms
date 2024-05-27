@@ -10,8 +10,11 @@ public class EntityRepository(CmsDbContext context) : IEntityRepository
     {
         var model = await context.Models
             .Include(model => model.StringKeyFields)
+            .Include(model => model.IntegerKeyFields)
             .Include(model => model.Entities)!
-            .ThenInclude(entity => entity.StringValueFields)
+                .ThenInclude(entity => entity.StringValueFields)
+            .Include(model => model.Entities)!
+                .ThenInclude(entity => entity.IntegerValueFields)
             .FirstOrDefaultAsync(model => model.Id == id);
 
         return model?.Entities;
@@ -21,8 +24,11 @@ public class EntityRepository(CmsDbContext context) : IEntityRepository
     {
         return context.Entities
             .Include(entity => entity.StringValueFields)
+            .Include(model => model.IntegerValueFields)
             .Include(entity => entity.Model)
-            .ThenInclude(model => model!.StringKeyFields)
+                .ThenInclude(model => model!.StringKeyFields)
+            .Include(entity => entity.Model)
+                .ThenInclude(model => model!.IntegerKeyFields)
             .FirstOrDefaultAsync(entity => entity.Id == id);
     }
 }

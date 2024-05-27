@@ -62,7 +62,7 @@ using (var scope = app.Services.CreateScope())
         Model = model,
     };
 
-    var durationKey = new StringKeyField
+    var durationKey = new IntegerKeyField
     {
         Key = "duration",
         Model = model,
@@ -81,10 +81,10 @@ using (var scope = app.Services.CreateScope())
         Entity = instance
     };
     
-    var durationValue = new StringValueField
+    var durationValue = new IntegerValueField
     {
-        Value = "3:20",
-        StringKeyField = durationKey,
+        Value = 120,
+        IntegerKeyField = durationKey,
         Entity = instance
     };
 
@@ -92,10 +92,10 @@ using (var scope = app.Services.CreateScope())
     context?.Entities.Add(instance);
     
     context?.StringKeyFields.Add(titleKey);
-    context?.StringKeyFields.Add(durationKey);
+    context?.IntegerKeyFields.Add(durationKey);
     
     context?.StringValueFields.Add(titleValue);
-    context?.StringValueFields.Add(durationValue);
+    context?.IntegerValueFields.Add(durationValue);
 
     context?.SaveChanges();
 }

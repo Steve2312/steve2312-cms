@@ -21,6 +21,7 @@ public class ModelRepository(CmsDbContext context) : IModelRepository
     {
         return await context.Models
             .Include(model => model.StringKeyFields)
+            .Include(model => model.IntegerKeyFields)
             .FirstOrDefaultAsync(model => model.Id == id);
     }
 
@@ -28,6 +29,7 @@ public class ModelRepository(CmsDbContext context) : IModelRepository
     {
         return await context.Models
             .Include(model => model.StringKeyFields)
+            .Include(model => model.IntegerKeyFields)
             .ToListAsync();
     }
 }
