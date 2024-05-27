@@ -1,5 +1,7 @@
 ﻿using System.Text.Json.Nodes;
 using Microsoft.AspNetCore.Mvc;
+using steve2312.Cms.API.V2.Exceptions;
+using steve2312.Cms.API.V2.Requests;
 using steve2312.Cms.API.V2.Responses;
 using steve2312.Cms.API.V2.Services;
 
@@ -32,12 +34,36 @@ public class EntityController(IEntityService entityService, ISerializationServic
     }
     
     /// <summary>
+    /// Create entity from specific model
+    /// </summary>
+    /// <response code="200">Entities returned created</response>
+    /// <response code="400">Received model seems invalid</response>
+    /// <response code="404">Model with specified id could not be found</response>
+    [HttpPut("model/{id}")]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<EntityResponse>))]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> CreateWithModelId(Guid id, CreateEntityRequest request)
+    {
+        try
+        {
+            var entity = await entityService.CreateWithModelIdAsync(request, id);
+            var response = entity.ToResponse();
+
+            return Ok(response);
+        }
+        catch (ModelNotFoundException)
+        {
+            return NotFound();
+        }
+    }
+    
+    /// <summary>
     /// Retrieve all serialized entities from specific model
     /// </summary>
     /// <response code="200">Serialized entities returned successfully</response>
     /// <response code="404">Model with specified id could not be found</response>
     [HttpGet("model/{id}/serialized")]
-    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<JsonObject>))]
+    [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> GetAllSerializedByModelId(Guid id)
     {
@@ -82,7 +108,7 @@ public class EntityController(IEntityService entityService, ISerializationServic
     /// <response code="404">Entity with specified id could not be found</response>
     /// <response code="500">Entity was not able to be serialized</response>
     [HttpGet("{id}/serialized")]
-    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(JsonObject))]
+    [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
     public async Task<IActionResult> GetSerialized(Guid id)

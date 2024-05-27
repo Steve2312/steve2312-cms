@@ -6,6 +6,6 @@ namespace steve2312.Cms.API.V2.Services;
 public interface IModelService
 {
     Task<Model> CreateAsync(CreateModelRequest request);
-    Task<Model?> GetAsync(Guid id);
+    Task<Model> GetAsync(Guid id);
     Task<IEnumerable<Model>> GetAllAsync();
 }

@@ -6,6 +6,14 @@ namespace steve2312.Cms.API.V2.Repositories;
 
 public class EntityRepository(CmsDbContext context) : IEntityRepository
 {
+    public async Task<Entity> CreateAsync(Entity entity)
+    {
+        await context.Entities.AddAsync(entity);
+        await context.SaveChangesAsync();
+
+        return entity;
+    }
+
     public async Task<IEnumerable<Entity>?> GetAllByModelIdAsync(Guid id)
     {
         var model = await context.Models

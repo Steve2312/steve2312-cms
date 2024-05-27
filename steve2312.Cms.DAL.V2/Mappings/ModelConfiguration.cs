@@ -21,5 +21,11 @@ public class ModelConfiguration : IEntityTypeConfiguration<Model>
         builder
             .HasIndex(model => model.Name)
             .IsUnique();
+        
+        // Define relation with keyfields here
+        builder
+            .HasMany(model => model.DoubleKeyFields)
+            .WithOne(field => field.Model)
+            .HasForeignKey(field => field.ModelId);
     }
 }

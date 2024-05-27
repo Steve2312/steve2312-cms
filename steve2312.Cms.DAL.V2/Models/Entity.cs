@@ -8,7 +8,7 @@ public class Entity
     public required string Name { get; init; }
     
     public virtual Model? Model { get; init; }
-    public virtual ICollection<StringValueField>? StringValueFields { get; init; }
-    public virtual ICollection<IntegerValueField>? IntegerValueFields { get; init; }
+    public virtual ICollection<StringValueField>? StringValueFields { get; set; }
+    public virtual ICollection<IntegerValueField>? IntegerValueFields { get; set; }
     
 }

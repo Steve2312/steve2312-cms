@@ -8,5 +8,7 @@ public class Model
     public required string Name { get; init; }
     public virtual ICollection<StringKeyField>? StringKeyFields { get; init; }
     public virtual ICollection<IntegerKeyField>? IntegerKeyFields { get; init; }
+    
+    public virtual ICollection<KeyField<double>>? DoubleKeyFields { get; init;  }
     public virtual ICollection<Entity>? Entities { get; init; }
 }

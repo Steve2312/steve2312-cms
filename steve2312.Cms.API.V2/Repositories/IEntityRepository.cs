@@ -4,6 +4,7 @@ namespace steve2312.Cms.API.V2.Repositories;
 
 public interface IEntityRepository
 {
+    Task<Entity> CreateAsync(Entity entity);
     Task<IEnumerable<Entity>?> GetAllByModelIdAsync(Guid id);
     Task<Entity?> GetAsync(Guid id);
 }

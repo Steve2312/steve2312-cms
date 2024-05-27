@@ -23,14 +23,5 @@ public class IntegerValueFieldConfiguration : IEntityTypeConfiguration<IntegerVa
             .WithMany(entity => entity.IntegerValueFields)
             .HasForeignKey(field => field.EntityId)
             .IsRequired();
-        
-        // The value is unique based on the key it's referencing and it's instance 
-        builder
-            .HasIndex(field => new
-            {
-                field.KeyFieldId,
-                field.EntityId
-            })
-            .IsUnique();
     }
 }

@@ -17,11 +17,11 @@ public class EntityConfiguration : IEntityTypeConfiguration<Entity>
             .WithMany(model => model.Entities)
             .IsRequired();
         
-        // The name of the instance must be unique
         builder
             .HasIndex(entity => entity.Name)
             .IsUnique();
-
+        
+        // Define relationships with ValueFields here!
         builder
             .HasMany(entity => entity.StringValueFields)
             .WithOne(field => field.Entity);

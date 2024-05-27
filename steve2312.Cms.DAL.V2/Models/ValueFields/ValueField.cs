@@ -10,3 +10,10 @@ public class ValueField
     public Guid KeyFieldId { get; init; }
     public virtual Entity? Entity { get; init; }
 }
+
+public class ValueField<T> : ValueField
+{
+    public required T Value { get; init; }
+    
+    public virtual KeyField<T>? KeyField { get; init; }
+}

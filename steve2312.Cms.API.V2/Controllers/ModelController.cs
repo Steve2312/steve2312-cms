@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using steve2312.Cms.API.V2.Exceptions;
 using steve2312.Cms.API.V2.Requests;
 using steve2312.Cms.API.V2.Responses;
 using steve2312.Cms.API.V2.Services;
@@ -33,16 +34,17 @@ public class ModelController(IModelService service) : Controller
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> Get(Guid id)
     {
-        var model = await service.GetAsync(id);
-
-        if (model == null)
+        try
+        {
+            var model = await service.GetAsync(id);
+            var response = model.ToResponse();
+            
+            return Ok(response);
+        }
+        catch (ModelNotFoundException)
         {
             return NotFound();
         }
-
-        var response = model.ToResponse();
-
-        return Ok(response);
     }
     
     /// <summary>

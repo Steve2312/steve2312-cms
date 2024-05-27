@@ -1,6 +1,6 @@
 ﻿using steve2312.Cms.DAL.V2.Models.KeyFields;
 
-namespace steve2312.Cms.API.V2.Requests;
+namespace steve2312.Cms.API.V2.Requests.KeyFields;
 
 public class CreateStringKeyFieldRequest
 {

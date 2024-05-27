@@ -27,6 +27,7 @@ public class CmsDbContext(DbContextOptions options) : DbContext(options)
         modelBuilder.ApplyConfiguration(new StringKeyFieldConfiguration());
         modelBuilder.ApplyConfiguration(new IntegerKeyFieldConfiguration());
         
+        modelBuilder.ApplyConfiguration(new ValueFieldConfiguration());
         modelBuilder.ApplyConfiguration(new StringValueFieldConfiguration());
         modelBuilder.ApplyConfiguration(new IntegerValueFieldConfiguration());
     }

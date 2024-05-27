@@ -1,3 +1,4 @@
+using steve2312.Cms.API.V2.Exceptions;
 using steve2312.Cms.API.V2.Repositories;
 using steve2312.Cms.API.V2.Requests;
 using steve2312.Cms.DAL.V2.Models;
@@ -8,12 +9,18 @@ public class ModelService(IModelRepository repository) : IModelService
 {
     public Task<Model> CreateAsync(CreateModelRequest request)
     {
-        return repository.CreateAsync(request);
+        var model = request.ToModel();
+        
+        return repository.CreateAsync(model);
     }
 
-    public Task<Model?> GetAsync(Guid id)
+    public async Task<Model> GetAsync(Guid id)
     {
-        return repository.GetAsync(id);
+        var model = await repository.GetAsync(id);
+
+        if (model == null) throw new ModelNotFoundException();
+        
+        return model;
     }
 
     public Task<IEnumerable<Model>> GetAllAsync()

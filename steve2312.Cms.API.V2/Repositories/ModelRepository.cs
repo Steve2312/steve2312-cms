@@ -7,10 +7,8 @@ namespace steve2312.Cms.API.V2.Repositories;
 
 public class ModelRepository(CmsDbContext context) : IModelRepository
 {
-    public async Task<Model> CreateAsync(CreateModelRequest request)
+    public async Task<Model> CreateAsync(Model model)
     {
-        var model = request.ToModel();
-
         await context.Models.AddAsync(model);
         await context.SaveChangesAsync();
 
