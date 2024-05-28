@@ -4,8 +4,6 @@ using steve2312.Cms.API.V2.Repositories;
 using steve2312.Cms.API.V2.Services;
 using steve2312.Cms.DAL.V2;
 using steve2312.Cms.DAL.V2.Models;
-using steve2312.Cms.DAL.V2.Models.KeyFields;
-using steve2312.Cms.DAL.V2.Models.ValueFields;
 
 var connectionString = Environment.GetEnvironmentVariable("CONNECTION_STRING") ??
                        throw new InvalidOperationException("CONNECTION_STRING");
@@ -56,13 +54,13 @@ using (var scope = app.Services.CreateScope())
         Name = "song",
     };
 
-    var titleKey = new StringKeyField
+    var titleKey = new KeyField<string>
     {
         Key = "title",
         Model = model,
     };
 
-    var durationKey = new IntegerKeyField
+    var durationKey = new KeyField<int>
     {
         Key = "duration",
         Model = model,
@@ -74,17 +72,17 @@ using (var scope = app.Services.CreateScope())
         Model = model,
     };
 
-    var titleValue = new StringValueField
+    var titleValue = new ValueField<string>
     {
         Value = "Bubble Gum",
-        StringKeyField = titleKey,
+        KeyField = titleKey,
         Entity = instance
     };
     
-    var durationValue = new IntegerValueField
+    var durationValue = new ValueField<int>
     {
         Value = 120,
-        IntegerKeyField = durationKey,
+        KeyField = durationKey,
         Entity = instance
     };
 

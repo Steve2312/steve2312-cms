@@ -7,8 +7,8 @@ public class EntityResponse
     public required Guid Id { get; init; }
     public required string Name { get; init; }
     public required ModelResponse? Model { get; init; }
-    public required IEnumerable<StringValueFieldResponse>? StringValueFields { get; init; }
-    public required IEnumerable<IntegerValueFieldResponse>? IntegerValueFields { get; init; }
+    public required IEnumerable<ValueFieldResponse<string>>? StringValueFields { get; init; }
+    public required IEnumerable<ValueFieldResponse<int>>? IntegerValueFields { get; init; }
 }
 
 public static class EntityResponseExtensions
@@ -20,8 +20,8 @@ public static class EntityResponseExtensions
             Id = entity.Id,
             Name = entity.Name,
             Model = entity.Model?.ToResponse(),
-            StringValueFields = entity.StringValueFields?.Select(StringValueFieldResponseExtensions.ToResponse),
-            IntegerValueFields = entity.IntegerValueFields?.Select(IntegerValueFieldResponseExtensions.ToResponse)
+            StringValueFields = entity.StringValueFields?.Select(ValueFieldResponseExtensions.ToResponse),
+            IntegerValueFields = entity.IntegerValueFields?.Select(ValueFieldResponseExtensions.ToResponse)
         };
     }
 }

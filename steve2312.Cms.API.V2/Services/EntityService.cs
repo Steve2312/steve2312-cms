@@ -12,16 +12,8 @@ public class EntityService(IEntityRepository entityRepository, IModelRepository 
         var model = await modelRepository.GetAsync(modelId);
 
         if (model == null) throw new ModelNotFoundException();
-        
+
         var entity = request.ToModel(model);
-        
-        entity.StringValueFields = entity.StringValueFields?
-            .Where(valueField => model.StringKeyFields?.FirstOrDefault(keyField => keyField.Id == valueField.KeyFieldId) != null)
-            .ToList();
-        
-        entity.IntegerValueFields = entity.IntegerValueFields?
-            .Where(valueField => model.IntegerKeyFields?.FirstOrDefault(keyField => keyField.Id == valueField.KeyFieldId) != null)
-            .ToList();
         
         return await entityRepository.CreateAsync(entity);
     }

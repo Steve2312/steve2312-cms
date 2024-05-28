@@ -21,7 +21,6 @@ public class EntityConfiguration : IEntityTypeConfiguration<Entity>
             .HasIndex(entity => entity.Name)
             .IsUnique();
         
-        // Define relationships with ValueFields here!
         builder
             .HasMany(entity => entity.StringValueFields)
             .WithOne(field => field.Entity);

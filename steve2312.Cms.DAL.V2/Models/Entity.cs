@@ -1,6 +1,4 @@
-﻿using steve2312.Cms.DAL.V2.Models.ValueFields;
-
-namespace steve2312.Cms.DAL.V2.Models;
+﻿namespace steve2312.Cms.DAL.V2.Models;
 
 public class Entity
 {
@@ -8,7 +6,7 @@ public class Entity
     public required string Name { get; init; }
     
     public virtual Model? Model { get; init; }
-    public virtual ICollection<StringValueField>? StringValueFields { get; set; }
-    public virtual ICollection<IntegerValueField>? IntegerValueFields { get; set; }
+    public virtual ICollection<ValueField<string>>? StringValueFields { get; set; }
+    public virtual ICollection<ValueField<int>>? IntegerValueFields { get; set; }
     
 }

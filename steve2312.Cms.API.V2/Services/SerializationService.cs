@@ -1,7 +1,5 @@
 ﻿using System.Text.Json.Nodes;
 using steve2312.Cms.DAL.V2.Models;
-using steve2312.Cms.DAL.V2.Models.KeyFields;
-using steve2312.Cms.DAL.V2.Models.ValueFields;
 
 namespace steve2312.Cms.API.V2.Services;
 
@@ -35,19 +33,17 @@ public class SerializationService : ISerializationService
         return json;
     }
 
-    private static IEnumerable<KeyValuePair<TK, TV?>> CombineKeyValueFields<TK, TV>(
-        IEnumerable<TK> keyFields,
-        IEnumerable<TV> valueFields
+    private static IEnumerable<KeyValuePair<KeyField<T>, ValueField<T>?>> CombineKeyValueFields<T>(
+        IEnumerable<KeyField<T>> keyFields,
+        IEnumerable<ValueField<T>> valueFields
     ) 
-        where TK: KeyField 
-        where TV: ValueField
     {
         return (
             from keyField in keyFields
             join valueField in valueFields
                 on keyField.Id equals valueField.KeyFieldId into field 
             from valueField in field.DefaultIfEmpty()
-            select new KeyValuePair<TK, TV?>(keyField, valueField)
+            select new KeyValuePair<KeyField<T>, ValueField<T>?>(keyField, valueField)
         );
     }
 }

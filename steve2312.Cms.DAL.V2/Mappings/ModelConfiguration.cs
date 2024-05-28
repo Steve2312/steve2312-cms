@@ -6,7 +6,6 @@ namespace steve2312.Cms.DAL.V2.Mappings;
 
 public class ModelConfiguration : IEntityTypeConfiguration<Model>
 {
-
     public void Configure(EntityTypeBuilder<Model> builder)
     {
         builder
@@ -17,14 +16,17 @@ public class ModelConfiguration : IEntityTypeConfiguration<Model>
             .HasIndex(model => model.Name)
             .IsUnique();
         
-        // The model name must be unique
         builder
             .HasIndex(model => model.Name)
             .IsUnique();
         
-        // Define relation with keyfields here
         builder
-            .HasMany(model => model.DoubleKeyFields)
+            .HasMany(model => model.StringKeyFields)
+            .WithOne(field => field.Model)
+            .HasForeignKey(field => field.ModelId);
+        
+        builder
+            .HasMany(model => model.IntegerKeyFields)
             .WithOne(field => field.Model)
             .HasForeignKey(field => field.ModelId);
     }

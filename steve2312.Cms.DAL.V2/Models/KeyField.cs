@@ -1,6 +1,4 @@
-﻿using steve2312.Cms.DAL.V2.Models.ValueFields;
-
-namespace steve2312.Cms.DAL.V2.Models.KeyFields;
+﻿namespace steve2312.Cms.DAL.V2.Models;
 
 public class KeyField
 {

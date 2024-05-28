@@ -1,14 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using steve2312.Cms.DAL.V2.Models.ValueFields;
+using steve2312.Cms.DAL.V2.Models;
 
-namespace steve2312.Cms.DAL.V2.Mappings.ValueFields;
+namespace steve2312.Cms.DAL.V2.Mappings;
 
 public class ValueFieldConfiguration : IEntityTypeConfiguration<ValueField>
 {
     public void Configure(EntityTypeBuilder<ValueField> builder)
     {
-        // The value is unique based on the key it's referencing and it's instance 
         builder
             .HasIndex(field => new
             {
