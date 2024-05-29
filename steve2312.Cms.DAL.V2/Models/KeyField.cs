@@ -2,7 +2,7 @@
 
 public class KeyField
 {
-    public Guid Id { get; set; }
+    public Guid Id { get; init; }
     public required string Key { get; init; }
 
     public required bool Required { get; init; }

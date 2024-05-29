@@ -6,7 +6,7 @@ public class Entity
     public required string Name { get; init; }
     
     public virtual Model Model { get; init; } = null!;
-    public virtual ICollection<ValueField<string>> StringValueFields { get; set; } = new List<ValueField<string>>();
-    public virtual ICollection<ValueField<int>> IntegerValueFields { get; set; } = new List<ValueField<int>>();
+    public virtual ICollection<ValueField<string>> StringValueFields { get; init; } = new List<ValueField<string>>();
+    public virtual ICollection<ValueField<int>> IntegerValueFields { get; init; } = new List<ValueField<int>>();
     
 }
