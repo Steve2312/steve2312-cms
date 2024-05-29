@@ -6,6 +6,7 @@ public class KeyFieldResponse
 {
     public required Guid Id { get; init; }
     public required string Key { get; init; }
+    public required bool Required { get; init; }
 }
 
 public static class KeyFieldResponseExtensions
@@ -15,7 +16,8 @@ public static class KeyFieldResponseExtensions
         return new KeyFieldResponse
         {
             Id = keyField.Id,
-            Key = keyField.Key
+            Key = keyField.Key,
+            Required = keyField.Required
         };
     }
 }

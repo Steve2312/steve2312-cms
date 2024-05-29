@@ -23,10 +23,12 @@ public class EntityConfiguration : IEntityTypeConfiguration<Entity>
         
         builder
             .HasMany(entity => entity.StringValueFields)
-            .WithOne(field => field.Entity);
+            .WithOne(field => field.Entity)
+            .IsRequired();
         
         builder
             .HasMany(entity => entity.IntegerValueFields)
-            .WithOne(field => field.Entity);
+            .WithOne(field => field.Entity)
+            .IsRequired();
     }
 }

@@ -58,12 +58,14 @@ using (var scope = app.Services.CreateScope())
     {
         Key = "title",
         Model = model,
+        Required = true,
     };
 
     var durationKey = new KeyField<int>
     {
         Key = "duration",
         Model = model,
+        Required = true,
     };
 
     var instance = new Entity

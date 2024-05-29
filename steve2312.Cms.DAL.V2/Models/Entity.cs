@@ -5,8 +5,8 @@ public class Entity
     public Guid Id { get; init; }
     public required string Name { get; init; }
     
-    public virtual Model? Model { get; init; }
-    public virtual ICollection<ValueField<string>>? StringValueFields { get; set; }
-    public virtual ICollection<ValueField<int>>? IntegerValueFields { get; set; }
+    public virtual Model Model { get; init; } = null!;
+    public virtual ICollection<ValueField<string>> StringValueFields { get; set; } = new List<ValueField<string>>();
+    public virtual ICollection<ValueField<int>> IntegerValueFields { get; set; } = new List<ValueField<int>>();
     
 }

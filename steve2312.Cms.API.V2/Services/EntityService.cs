@@ -12,6 +12,9 @@ public class EntityService(IEntityRepository entityRepository, IModelRepository 
         var model = await modelRepository.GetAsync(modelId);
 
         if (model == null) throw new ModelNotFoundException();
+        
+        ValidateRequiredFields(model.StringKeyFields, request.StringValueFields);
+        ValidateRequiredFields(model.IntegerKeyFields, request.IntegerValueFields);
 
         var entity = request.ToModel(model);
         
@@ -26,5 +29,17 @@ public class EntityService(IEntityRepository entityRepository, IModelRepository 
     public Task<Entity?> GetAsync(Guid id)
     {
         return entityRepository.GetAsync(id);
+    }
+
+    private static void ValidateRequiredFields<T>(IEnumerable<KeyField<T>> keyFields, IEnumerable<CreateValueFieldRequest<T>> valueFields)
+    {
+        var requiredKeyFields = keyFields.Where(field => field.Required);
+        var missingRequiredField = requiredKeyFields
+            .Any(keyField => valueFields.All(valueField => keyField.Id != valueField.KeyFieldId));
+
+        if (missingRequiredField)
+        {
+            throw new RequiredKeyValueFieldNotFound();
+        }
     }
 }

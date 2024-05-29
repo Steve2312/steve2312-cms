@@ -23,11 +23,13 @@ public class ModelConfiguration : IEntityTypeConfiguration<Model>
         builder
             .HasMany(model => model.StringKeyFields)
             .WithOne(field => field.Model)
-            .HasForeignKey(field => field.ModelId);
+            .HasForeignKey(field => field.ModelId)
+            .IsRequired();
         
         builder
             .HasMany(model => model.IntegerKeyFields)
             .WithOne(field => field.Model)
-            .HasForeignKey(field => field.ModelId);
+            .HasForeignKey(field => field.ModelId)
+            .IsRequired();
     }
 }

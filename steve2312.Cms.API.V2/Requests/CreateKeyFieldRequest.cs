@@ -5,6 +5,7 @@ namespace steve2312.Cms.API.V2.Requests;
 public class CreateKeyFieldRequest
 {
     public required string Key { get; init; }
+    public required bool Required { get; init; }
 }
 
 public static class CreateKeyFieldRequestExtensions
@@ -13,7 +14,8 @@ public static class CreateKeyFieldRequestExtensions
     {
         return new KeyField<T>
         {
-            Key = request.Key
+            Key = request.Key,
+            Required = request.Required
         };
     }
 }

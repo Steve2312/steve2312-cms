@@ -55,6 +55,10 @@ public class EntityController(IEntityService entityService, ISerializationServic
         {
             return NotFound();
         }
+        catch (RequiredKeyValueFieldNotFound)
+        {
+            return BadRequest();
+        }
     }
     
     /// <summary>
