@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using MySqlConnector;
 using steve2312.Cms.API.V2.Exceptions;
 using steve2312.Cms.API.V2.Requests;
 using steve2312.Cms.API.V2.Responses;
@@ -51,14 +53,22 @@ public class ModelController(IModelService service) : Controller
     /// Create new model
     /// </summary>
     /// <response code="200">Model returned successfully</response>
-    /// <response code="404">Model with specified name could not be found</response>
+    /// <response code="409">Model with specified name already exists</response>
     [HttpPut]
-    [ProducesResponseType(StatusCodes.Status201Created, Type = typeof(ModelResponse))]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ModelResponse))]
+    [ProducesResponseType(StatusCodes.Status409Conflict)]
     public async Task<IActionResult> Create(CreateModelRequest request)
     {
-        var model = await service.CreateAsync(request);
-        var response = model.ToResponse();
+        try
+        {
+            var model = await service.CreateAsync(request);
+            var response = model.ToResponse();
 
-        return Ok(response);
+            return Ok(response);
+        }
+        catch (DbUpdateException ex) when (ex.InnerException is MySqlException { Number: 1062 })
+        {
+            return Conflict();
+        }
     }
 }

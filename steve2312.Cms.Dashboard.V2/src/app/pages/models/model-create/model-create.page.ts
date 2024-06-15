@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ButtonComponent } from '../../../components/atoms/button/button.component';
 import { HeadingComponent } from '../../../components/atoms/heading/heading.component';
 import { EditableHeadingComponent } from '../../../components/atoms/editable-heading/editable-heading.component';
