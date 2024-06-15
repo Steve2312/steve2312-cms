@@ -1,0 +1,29 @@
+<div class="flex flex-col gap-8 px-24">
+  <div class="flex justify-between items-center gap-8 mt-24 mb-12">
+    <app-heading>Models</app-heading>
+    <app-button
+      [style]="'create'"
+      (click)="router.navigate(['/models/create'])"
+    ></app-button>
+  </div>
+  @if (models) {
+  <app-table>
+    <app-table-row [header]="true">
+      <app-table-header>Name</app-table-header>
+      <app-table-header>Last updated</app-table-header>
+      <app-table-header>Author</app-table-header>
+      <app-table-header>Status</app-table-header>
+    </app-table-row>
+    @for (model of models; track model.id) {
+    <app-table-row>
+      <app-table-data>{{ model.name }}</app-table-data>
+      <app-table-data>{{ model.lastUpdated }}</app-table-data>
+      <app-table-data>ADMIN</app-table-data>
+      <app-status
+        [style]="model.entityCount ? 'in-use' : 'unused'"
+      ></app-status>
+    </app-table-row>
+    }
+  </app-table>
+  }
+</div>

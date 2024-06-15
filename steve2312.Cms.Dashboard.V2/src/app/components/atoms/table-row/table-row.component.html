@@ -1,0 +1,18 @@
+@if (header) {
+  <div
+    class="flex items-center p-6 gap-6 dark:bg-neutral-800 border-b dark:border-neutral-700 [&>*]:flex-1"
+  >
+    <ng-container [ngTemplateOutlet]="content"></ng-container>
+  </div>
+}
+@if (!header) {
+  <div
+    class="flex items-center p-6 gap-6 dark:bg-transparent hover:bg-neutral-800 cursor-pointer [&>*]:flex-1"
+  >
+    <ng-container [ngTemplateOutlet]="content"></ng-container>
+  </div>
+}
+
+<ng-template #content>
+  <ng-content></ng-content>
+</ng-template>

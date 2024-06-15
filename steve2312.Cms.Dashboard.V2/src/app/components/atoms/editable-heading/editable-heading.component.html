@@ -1,0 +1,25 @@
+<div class="flex flex-col gap-2.5" [formGroup]="formGroup">
+  @if (
+    (formGroup.controls.name.dirty || formGroup.controls.name.touched) &&
+    formGroup.controls.name.errors &&
+    formGroup.controls.name.hasError("required")
+  ) {
+    <span class="text-sm font-normal dark:text-red-500"
+      >Name of the model cannot be empty</span
+    >
+  }
+  @if (
+    (formGroup.controls.name.dirty || formGroup.controls.name.touched) &&
+    formGroup.controls.name.errors &&
+    formGroup.controls.name.hasError("maxlength")
+  ) {
+    <span class="text-sm font-normal dark:text-red-500"
+      >Maximum length of the model name is 30 characters</span
+    >
+  }
+  <input
+    class="text-4xl font-semibold bg-transparent dark:text-white p-4 border dark:border-neutral-800 rounded-lg focus:outline focus:outline-2 focus:outline-offset-1 focus:outline-neutral-800"
+    formControlName="name"
+    placeholder="Untitled"
+  />
+</div>

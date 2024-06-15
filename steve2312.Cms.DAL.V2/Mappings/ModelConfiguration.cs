@@ -10,7 +10,8 @@ public class ModelConfiguration : IEntityTypeConfiguration<Model>
     {
         builder
             .Property(model => model.Name)
-            .HasMaxLength(30);
+            .HasMaxLength(30)
+            .IsRequired();
 
         builder
             .HasIndex(model => model.Name)

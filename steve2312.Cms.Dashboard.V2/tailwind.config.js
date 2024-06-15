@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     fontFamily: {
       sans: [
-        "Poppins",
+        "Plus Jakarta Sans",
         "ui-sans-serif",
         "system-ui",
         "sans-serif",

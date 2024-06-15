@@ -8,6 +8,9 @@ using steve2312.Cms.DAL.V2.Models;
 var connectionString = Environment.GetEnvironmentVariable("CONNECTION_STRING") ??
                        throw new InvalidOperationException("CONNECTION_STRING");
 
+var allowOrigin = Environment.GetEnvironmentVariable("ALLOW_ORIGIN") ??
+                       throw new InvalidOperationException("ALLOW_ORIGIN");
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -22,11 +25,23 @@ builder.Services.AddScoped<ISerializationService, SerializationService>();
 builder.Services.AddScoped<IModelRepository, ModelRepository>();
 builder.Services.AddScoped<IEntityRepository, EntityRepository>();
 
-
 // Context
 builder.Services.AddDbContext<CmsDbContext>(options =>
 {
     options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
+});
+
+// CORS
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("cors", policy =>
+    {
+        policy
+            .WithOrigins(allowOrigin)
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    });
+    builder.Services.AddLogging();
 });
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -51,7 +66,7 @@ using (var scope = app.Services.CreateScope())
 
     var model = new Model
     {
-        Name = "song",
+        Name = "Song",
     };
 
     var titleKey = new KeyField<string>
@@ -108,6 +123,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCors("cors");
 
 app.MapControllers();
 

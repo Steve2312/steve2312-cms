@@ -1,0 +1,20 @@
+<div
+  class="inline-flex gap-6 items-center cursor-pointer border-b-2 border-transparent hover:border-neutral-400 py-2"
+  (click)="previousPage()"
+>
+  <svg
+    width="7"
+    height="12"
+    viewBox="0 0 7 12"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    class="dark:fill-neutral-400"
+  >
+    <path
+      d="M0.251032 5.39485C-0.0836773 5.72955 -0.0836773 6.27312 0.251032 6.60783L5.39217 11.749C5.72688 12.0837 6.27044 12.0837 6.60515 11.749C6.93986 11.4143 6.93986 10.8707 6.60515 10.536L2.06917 6L6.60248 1.46402C6.93719 1.12931 6.93719 0.585741 6.60248 0.251032C6.26777 -0.0836773 5.7242 -0.0836773 5.38949 0.251032L0.248354 5.39217L0.251032 5.39485Z"
+    />
+  </svg>
+  <span class="text-sm font-semibold dark:text-neutral-400">
+    <ng-content></ng-content>
+  </span>
+</div>

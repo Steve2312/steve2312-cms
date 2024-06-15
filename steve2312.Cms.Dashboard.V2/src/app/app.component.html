@@ -1,15 +1,10 @@
-<div class="h-screen w-screen p-5">
-  <div class="h-full w-full bg-neutral-900 rounded-lg">
-    <div class="h-full flex flex-row">
-      <div class="flex flex-col gap-2 p-2 w-64 border-r border-neutral-800">
-        <a class="text-sm text-neutral-200 p-4 hover:bg-neutral-700 rounded-lg"
-          >Entities</a
-        >
-        <a class="text-sm text-neutral-200 p-4 hover:bg-neutral-700 rounded-lg"
-          >Models</a
-        >
-        <i class="fa-solid fa-cube"></i>
-      </div>
+<div class="flex justify-center items-center h-screen w-screen p-5">
+  <div
+    class="flex h-full w-full overflow-hidden dark:bg-neutral-900 border dark:border-neutral-700 rounded-2xl"
+  >
+    <app-navigation></app-navigation>
+    <div class="h-full w-full overflow-auto">
+      <router-outlet></router-outlet>
     </div>
   </div>
 </div>

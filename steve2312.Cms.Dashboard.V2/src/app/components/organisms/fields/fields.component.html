@@ -1,0 +1,19 @@
+<div
+  class="h-full flex flex-col gap-2.5 p-8 border-l border-neutral-700 overflow-auto"
+>
+  <span class="text-2xl font-semibold dark:text-white mb-4">Field</span>
+  <div class="flex flex-col gap-2.5">
+    <app-field-card
+      title="String"
+      description="A text field with value as string"
+      [icon]="'string'"
+      (click)="addStringKeyField()"
+    ></app-field-card>
+    <app-field-card
+      title="Integer"
+      description="A number field with value as int32"
+      [icon]="'integer'"
+      (click)="addIntegerKeyField()"
+    ></app-field-card>
+  </div>
+</div>

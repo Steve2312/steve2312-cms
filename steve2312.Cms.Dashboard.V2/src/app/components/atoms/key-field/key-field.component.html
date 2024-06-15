@@ -1,0 +1,70 @@
+<div class="flex items-center gap-4 px-4" [formGroup]="formGroup">
+  <svg
+    width="12"
+    height="10"
+    viewBox="0 0 12 10"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    class="dark:fill-white cursor-grab"
+  >
+    <path
+      d="M0 0.833333C0 0.372396 0.372396 0 0.833333 0H10.8333C11.2943 0 11.6667 0.372396 11.6667 0.833333C11.6667 1.29427 11.2943 1.66667 10.8333 1.66667H0.833333C0.372396 1.66667 0 1.29427 0 0.833333ZM0 5C0 4.53906 0.372396 4.16667 0.833333 4.16667H10.8333C11.2943 4.16667 11.6667 4.53906 11.6667 5C11.6667 5.46094 11.2943 5.83333 10.8333 5.83333H0.833333C0.372396 5.83333 0 5.46094 0 5ZM11.6667 9.16667C11.6667 9.6276 11.2943 10 10.8333 10H0.833333C0.372396 10 0 9.6276 0 9.16667C0 8.70573 0.372396 8.33333 0.833333 8.33333H10.8333C11.2943 8.33333 11.6667 8.70573 11.6667 9.16667Z"
+    />
+  </svg>
+  <div
+    class="flex-1 flex flex-col gap-2 p-6 dark:bg-neutral-900 border dark:border-neutral-800 rounded-lg"
+  >
+    <span class="text-sm font-normal dark:text-neutral-500">{{ type }}</span>
+    <span class="text-sm font-bold dark:text-neutral-300">Key</span>
+    @if (
+      (formGroup.controls.key.dirty || formGroup.controls.key.touched) &&
+      formGroup.controls.key.errors &&
+      formGroup.controls.key.hasError("required")
+    ) {
+      <span class="text-sm font-normal dark:text-red-500"
+        >Key of the field cannot be empty</span
+      >
+    }
+    @if (
+      (formGroup.controls.key.dirty || formGroup.controls.key.touched) &&
+      formGroup.controls.key.errors &&
+      formGroup.controls.key.hasError("maxlength")
+    ) {
+      <span class="text-sm font-normal dark:text-red-500"
+        >Maximum length of the key is 30 characters</span
+      >
+    }
+    @if (
+      formGroup.controls.key.errors &&
+      formGroup.controls.key.hasError("duplicateKey")
+    ) {
+      <span class="text-sm font-normal dark:text-red-500"
+        >Duplicate key detected, make sure your keys are unique</span
+      >
+    }
+    <input
+      class="text-sm font-normal dark:text-white p-4 dark:bg-neutral-800 border dark:border-neutral-700 rounded-lg placeholder:text-sm placeholder:font-normal dark:placeholder:text-neutral-400 focus:outline focus:outline-2 focus:outline-offset-1 focus:outline-neutral-600"
+      placeholder="Type here your key"
+      formControlName="key"
+      (input)="inputHandler()"
+    />
+  </div>
+  <button
+    class="flex p-2.5 bg-red-500 hover:bg-red-600 border border-red-600 rounded-lg"
+    type="button"
+    (click)="deleteHandler()"
+  >
+    <svg
+      width="10"
+      height="10"
+      viewBox="0 0 10 10"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      class="fill-red-100"
+    >
+      <path
+        d="M3.26562 0.345703L3.125 0.625H1.25C0.904297 0.625 0.625 0.904297 0.625 1.25C0.625 1.5957 0.904297 1.875 1.25 1.875H8.75C9.0957 1.875 9.375 1.5957 9.375 1.25C9.375 0.904297 9.0957 0.625 8.75 0.625H6.875L6.73438 0.345703C6.62891 0.132813 6.41211 0 6.17578 0H3.82422C3.58789 0 3.37109 0.132813 3.26562 0.345703ZM8.75 2.5H1.25L1.66406 9.12109C1.69531 9.61523 2.10547 10 2.59961 10H7.40039C7.89453 10 8.30469 9.61523 8.33594 9.12109L8.75 2.5Z"
+      />
+    </svg>
+  </button>
+</div>

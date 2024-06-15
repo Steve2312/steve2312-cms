@@ -1,0 +1,26 @@
+<div class="h-full w-96 flex flex-col border-r border-neutral-700">
+  <div class="p-8 border-b border-neutral-700">
+    <app-profile
+      role="ADMIN"
+      name="Stefan So"
+      imageUrl="https://bleedingcool.com/wp-content/uploads/2024/03/Frieren-and-Fern-vs-Frierens-Clone-Part-2-Frieren-Beyond-Journeys-End-Ep-26-_-English-Subtitles-0-32-screenshot-2000x1125.jpg"
+    ></app-profile>
+  </div>
+  <div class="h-full flex flex-col gap-4 p-8">
+    <app-navigation-button
+      title="Entities"
+      [icon]="'entities'"
+      (click)="router.navigate(['entities'])"
+    ></app-navigation-button>
+    <app-navigation-button
+      title="Models"
+      [icon]="'models'"
+      (click)="router.navigate(['models'])"
+    ></app-navigation-button>
+    <div class="h-full"></div>
+    <app-navigation-button
+      title="Settings"
+      [icon]="'settings'"
+    ></app-navigation-button>
+  </div>
+</div>

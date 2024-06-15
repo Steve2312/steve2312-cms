@@ -1,0 +1,15 @@
+<div
+  class="flex flex-col gap-2 p-6 dark:bg-neutral-900 border dark:border-neutral-800 rounded-lg"
+>
+  <span class="text-sm font-normal dark:text-neutral-500">{{ type }}</span>
+  <span class="text-sm font-bold dark:text-neutral-300">{{ key }}</span>
+  @if (error) {
+    <span class="text-sm font-normal dark:text-red-500">{{ error }}</span>
+  }
+  <input
+    class="text-sm font-normal dark:text-white p-4 dark:bg-neutral-800 border dark:border-neutral-700 rounded-lg placeholder:text-sm placeholder:font-normal dark:placeholder:text-neutral-400 focus:outline focus:outline-2 focus:outline-offset-1 focus:outline-neutral-600"
+    placeholder="Type here your key"
+    [value]="value"
+    (input)="valueHandler($event)"
+  />
+</div>
