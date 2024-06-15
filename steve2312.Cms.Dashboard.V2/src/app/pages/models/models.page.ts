@@ -9,6 +9,8 @@ import { Model } from '../../interfaces/model.interface';
 import { TableDataComponent } from '../../components/atoms/table-data/table-data.component';
 import { StatusComponent } from '../../components/atoms/status/status.component';
 import { Router } from '@angular/router';
+import { LoaderComponent } from '../../components/molecules/loader/loader.component';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-models',
@@ -21,6 +23,8 @@ import { Router } from '@angular/router';
     TableRowComponent,
     TableDataComponent,
     StatusComponent,
+    LoaderComponent,
+    DatePipe,
   ],
   templateUrl: './models.page.html',
 })

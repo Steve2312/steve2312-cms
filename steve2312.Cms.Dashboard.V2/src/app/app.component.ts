@@ -9,6 +9,4 @@ import { NavigationComponent } from './components/organisms/navigation/navigatio
   styleUrl: './app.component.css',
   imports: [RouterOutlet, NavigationComponent],
 })
-export class AppComponent {
-  title = 'steve2312-cms-dashboard';
-}
+export class AppComponent {}
