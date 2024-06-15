@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ButtonComponent } from '../../../components/atoms/button/button.component';
 import { HeadingComponent } from '../../../components/atoms/heading/heading.component';
 import { EditableHeadingComponent } from '../../../components/atoms/editable-heading/editable-heading.component';
@@ -18,6 +18,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-model-create',
@@ -34,7 +35,8 @@ import {
   ],
   templateUrl: './model-create.page.html',
 })
-export class ModelCreatePage {
+export class ModelCreatePage implements OnInit {
+  public duplicateModelName: boolean = false;
   public createModelForm: FormGroup<CreateModelForm> =
     this.formBuilder.group<CreateModelForm>({
       name: new FormControl('', [
@@ -56,6 +58,12 @@ export class ModelCreatePage {
     private formBuilder: FormBuilder,
   ) {}
 
+  ngOnInit(): void {
+    this.createModelForm.controls.name.valueChanges.subscribe(() => {
+      this.duplicateModelName = false;
+    });
+  }
+
   public triggerValidation(): void {
     this.createModelForm.controls.stringKeyFields.controls.forEach((form) => {
       form.controls.key.updateValueAndValidity();
@@ -73,8 +81,15 @@ export class ModelCreatePage {
 
     this.service
       .createModel(this.createModelForm.value as CreateModel)
-      .subscribe(async () => {
-        await this.router.navigate(['../'], { relativeTo: this.route });
+      .subscribe({
+        next: async () => {
+          await this.router.navigate(['../'], { relativeTo: this.route });
+        },
+        error: (err: HttpErrorResponse) => {
+          if (err.status == 409) {
+            this.duplicateModelName = true;
+          }
+        },
       });
   }
 }

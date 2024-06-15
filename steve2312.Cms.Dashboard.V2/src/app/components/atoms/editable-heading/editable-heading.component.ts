@@ -10,4 +10,5 @@ import { CreateModelForm } from '../../../interfaces/create-model-form.interface
 })
 export class EditableHeadingComponent {
   @Input() formGroup!: FormGroup<CreateModelForm>;
+  @Input() error: string = '';
 }

@@ -17,6 +17,9 @@
       >Maximum length of the model name is 30 characters</span
     >
   }
+  @if (error) {
+    <span class="text-sm font-normal dark:text-red-500">{{ error }}</span>
+  }
   <input
     class="text-4xl font-semibold bg-transparent dark:text-white p-4 border dark:border-neutral-800 rounded-lg focus:outline focus:outline-2 focus:outline-offset-1 focus:outline-neutral-800"
     formControlName="name"
